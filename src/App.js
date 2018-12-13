@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import HelloWorld from './HelloWorld';
-import reducer from './reducers'; // create the reducer function elsewhere
-
-import { createStore } from 'redux'; // import createStore function
-
-const initialState = { tech: 'React ' }; //establish the initial state
-const store = createStore(reducer, initialState); // pass the reducer and initial state into the store to be created
+import ButtonGroup from './ButtonGroup';
+import { store } from './store';
 
 class App extends Component {
-  // state = {
-  //   tech: 'React'
-  // };
-
   render() {
-    return <HelloWorld tech={store.getState().tech} />;
+    return [
+      <HelloWorld key={1} tech={store.getState().tech} />,
+      <ButtonGroup key={2} technologies={['React', 'Elm', 'React-redux']} />
+    ];
   }
 }
 
